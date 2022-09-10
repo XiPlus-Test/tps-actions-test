@@ -9,7 +9,7 @@ runs:
   steps:
     - name: Get problems
       id: all-problems
-      uses: TNFSH-Programming-Contest/tps-actions/.github/actions/get-problems@main
+      uses: XiPlus-Test/tps-actions/.github/actions/get-problems@main
 
     - uses: dorny/paths-filter@v2
       id: changes
