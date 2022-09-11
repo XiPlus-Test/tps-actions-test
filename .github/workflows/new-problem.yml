@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: XiPlus-Test/tps-actions/.github/actions/install-tps@main
+      - uses: XiPlus-Test/tps-actions-test/.github/actions/install-tps@main
         if: ${{ runner.name == 'Hosted Agent' || startsWith(runner.name, 'GitHub Actions') }}
 
       - name: Download templates

@@ -13,7 +13,7 @@ runs:
   steps:
     - name: Get problems
       id: all-problems
-      uses: XiPlus-Test/tps-actions/.github/actions/get-problems@main
+      uses: XiPlus-Test/tps-actions-test/.github/actions/get-problems@main
 
     - name: Process
       id: run-problems

@@ -33,7 +33,7 @@ jobs:
       - name: Get changes
         if: github.event_name == 'push'
         id: changes
-        uses: XiPlus-Test/tps-actions/.github/actions/get-changes@main
+        uses: XiPlus-Test/tps-actions-test/.github/actions/get-changes@main
 
       - name: Check push
         if: github.event_name == 'push'
@@ -50,7 +50,7 @@ jobs:
 
       - name: Filter problems
         id: run-problems
-        uses: XiPlus-Test/tps-actions/.github/actions/run-problems@main
+        uses: XiPlus-Test/tps-actions-test/.github/actions/run-problems@main
         with:
           requests: ${{ env.REQUEST }}
 
@@ -63,7 +63,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: XiPlus-Test/tps-actions/.github/actions/install-tps@main
+      - uses: XiPlus-Test/tps-actions-test/.github/actions/install-tps@main
         if: ${{ runner.name == 'Hosted Agent' || startsWith(runner.name, 'GitHub Actions') }}
 
       - name: Install dependencies
@@ -121,7 +121,7 @@ jobs:
 
       - name: Get problems
         id: all-problems
-        uses: XiPlus-Test/tps-actions/.github/actions/get-problems@main
+        uses: XiPlus-Test/tps-actions-test/.github/actions/get-problems@main
 
       - name: Merge pdfs
         if: (github.event_name == 'push' && contains(github.event.head_commit.message, '[merge pdf]')) || (github.event_name == 'workflow_dispatch' && inputs.merge)
