@@ -31,7 +31,7 @@ for subtask in allSubtasks:
         for group in dp[i]:
             temp = group.copy()
             temp.add(subtask['id'])
-            if len(temp) <= GROUP_LIMIT:
+            if len(temp) <= GROUP_SIZE:
                 dp[i + subtask['score']].append(temp)
 
 output = '| score | count | groups |\n'
