@@ -24,14 +24,14 @@ allSubtasks.sort(key=lambda v: v['score'])
 
 total = len(problems) * 100
 dp = [[] for i in range(total + 1)]
-dp[0] = [[]]
+dp[0] = [set()]
 
 for subtask in allSubtasks:
     for i in range(total, -1, -1):
-        if len(dp[i]) == 1:
-            temp = dp[i][0].copy()
-            temp.append(subtask['id'])
-            if len(temp) <= GROUP_SIZE:
+        for group in dp[i]:
+            temp = group.copy()
+            temp.add(subtask['id'])
+            if len(temp) <= GROUP_LIMIT:
                 dp[i + subtask['score']].append(temp)
 
 output = '| score | count | groups |\n'
@@ -41,7 +41,7 @@ for i in range(1, total + 1):
         output += '| {} | {} | {} |\n'.format(
             i,
             len(dp[i]),
-            ' '.join(['(' + ', '.join(group) + ')' for group in dp[i]])
+            ' '.join(['(' + ', '.join(sorted(group)) + ')' for group in dp[i]])
         )
 
 reportpath = os.environ.get('REPORTPATH')
