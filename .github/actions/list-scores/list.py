@@ -2,7 +2,7 @@ import json
 import os
 
 os.chdir(os.environ.get('GITHUB_WORKSPACE'))
-GROUP_SIZE = os.environ.get('GROUPSIZE', 3)
+GROUP_SIZE = int(os.environ.get('GROUPSIZE', 3))
 
 with open('.problems.json', 'r', encoding='utf8') as f:
     problems = json.load(f)
