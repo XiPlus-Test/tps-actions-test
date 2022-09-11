@@ -28,6 +28,10 @@ jobs:
         with:
           report-path: ${{ inputs.report-path }}
 
+      - uses: XiPlus-Test/tps-actions-test/.github/actions/list-scores@main
+        with:
+          report-path: ${{ inputs.report-path }}
+
       - name: Commit files
         run: |
           git add "${{ inputs.report-path }}"
