@@ -94,6 +94,10 @@ for pro in problems:
         flags['pdf']['A'] = True
         print('Set pdf/A to true due to cover')
 
+    if pro == problems[-1] and changes['appendix'] == 'true':
+        flags['pdf'][problems[-1]] = True
+        print('Set pdf/{} to true due to appendix'.format(problems[-1]))
+
 # verify
 verify_files = json.loads(changes['verify_files'])
 for pro in problems:

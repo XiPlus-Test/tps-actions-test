@@ -22,6 +22,7 @@ jobs:
     outputs:
       problems: ${{ steps.run-problems.outputs.problemsjson }}
       pdf: ${{ steps.run-problems.outputs.problems }}
+      lastproblem: ${{ steps.run-problems.outputs.lastproblem }}
     steps:
       - uses: actions/checkout@v3
 
@@ -111,13 +112,25 @@ jobs:
           done
 
       - name: Merge cover into pA
-        if: contains(needs.pre-build.outputs.pdf, 'A')
+        if: contains(needs.pre-build.outputs.pdf, 'A') && hashFiles('cover.tex') != ''
         run: |
           xelatex cover.tex
           pdfunite cover.pdf pA/statement/index.pdf pA/statement/index-with-cover.pdf
           rm pA/statement/index.pdf
           mv pA/statement/index-with-cover.pdf pA/statement/index.pdf
           git add pA/statement/index.pdf
+
+      - name: Merge appendix into last problem
+        if: contains(needs.pre-build.outputs.pdf, needs.pre-build.outputs.lastproblem) && hashFiles('appendix.tex') != ''
+        env:
+          LASTPROBLEM: p${{ needs.pre-build.outputs.lastproblem }}/statement/index.pdf
+          TEMPPATH: p${{ needs.pre-build.outputs.lastproblem }}/statement/index-with-appendix.pdf
+        run: |
+          xelatex appendix.tex
+          pdfunite appendix.pdf $LASTPROBLEM $TEMPPATH
+          rm $LASTPROBLEM
+          mv $TEMPPATH $LASTPROBLEM
+          git add $LASTPROBLEM
 
       - name: Get problems
         id: all-problems
