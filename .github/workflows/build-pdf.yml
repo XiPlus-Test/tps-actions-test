@@ -127,7 +127,7 @@ jobs:
           TEMPPATH: p${{ needs.pre-build.outputs.lastproblem }}/statement/index-with-appendix.pdf
         run: |
           xelatex appendix.tex
-          pdfunite appendix.pdf $LASTPROBLEM $TEMPPATH
+          pdfunite $LASTPROBLEM appendix.pdf $TEMPPATH
           rm $LASTPROBLEM
           mv $TEMPPATH $LASTPROBLEM
           git add $LASTPROBLEM
