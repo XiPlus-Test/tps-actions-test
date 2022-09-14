@@ -26,7 +26,7 @@ jobs:
       - name: Download templates
         uses: actions/checkout@v3
         with:
-          repository: 'XiPlus-Test/tps-task-templates'
+          repository: 'TNFSH-Programming-Contest/tps-task-templates'
           path: 'tps-task-templates'
 
       - name: New problem
