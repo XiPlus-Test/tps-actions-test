@@ -107,7 +107,7 @@ jobs:
         run: |
           for prob in ${{ needs.pre-build.outputs.pdf }}; do
             echo "Build $prob"
-            cd p${prob} && tps statement && git add statement/index.pdf && cd ..
+            cd p${prob} && make statement && git add statement/index.pdf && cd ..
           done
 
       - name: Merge cover into pA
@@ -124,20 +124,9 @@ jobs:
         uses: XiPlus-Test/tps-actions-test/.github/actions/get-problems@main
 
       - name: Merge pdfs
-        if: (github.event_name == 'push' && contains(github.event.head_commit.message, '[merge pdf]')) || (github.event_name == 'workflow_dispatch' && inputs.merge)
+        if: (github.event_name == 'push') || (github.event_name == 'workflow_dispatch' && inputs.merge)
         run: |
-          MERGECMD="pdfunite "
-          for prob in ${{ steps.all-problems.outputs.problems }}; do
-            echo "Check $prob"
-            if [ -f "p${prob}/statement/index.pdf" ]; then
-              MERGECMD="$MERGECMD p${prob}/statement/index.pdf"
-            fi
-          done
-          MERGECMD="$MERGECMD pA/attachments/problems.pdf"
-
-          echo $MERGECMD
-          mkdir -p pA/attachments
-          $MERGECMD
+          make merge-pdfs
           git add pA/attachments/problems.pdf
 
       - name: Commit pdf
