@@ -7,6 +7,10 @@ on:
         default: 'report.md'
         required: false
         type: string
+      group-size:
+        default: 3
+        required: false
+        type: number
       runs-on:
         default: 'ubuntu-latest'
         required: false
@@ -31,6 +35,7 @@ jobs:
       - uses: XiPlus-Test/tps-actions-test/.github/actions/list-scores@main
         with:
           report-path: ${{ inputs.report-path }}
+          group-size: ${{ inputs.group-size }}
 
       - name: Commit files
         run: |
