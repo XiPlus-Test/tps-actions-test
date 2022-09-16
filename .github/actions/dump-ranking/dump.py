@@ -82,8 +82,8 @@ dumpdata('UserDetail.js', False)
 contests = dumpdata_dir('contests')
 if contests is None:
     exit(0)
-for c in contests:
-    dumpdata(os.path.join('contests', c))
+# for c in contests:
+#     dumpdata(os.path.join('contests', c))
 
 dumpdata('history')
 dumpdata('scores')
@@ -93,20 +93,20 @@ dumpdata('logo', False)
 tasks = dumpdata_dir('tasks')
 if tasks is None:
     exit(0)
-for t in tasks:
-    dumpdata(os.path.join('tasks', t))
+# for t in tasks:
+#     dumpdata(os.path.join('tasks', t))
 
 teams = dumpdata_dir('teams')
 if teams is None:
     exit(0)
-for t in teams:
-    dumpdata(os.path.join('teams', t))
+# for t in teams:
+#     dumpdata(os.path.join('teams', t))
 
 users = dumpdata_dir('users')
 if users is None:
     exit(0)
-for u in users:
-    dumpdata(os.path.join('users', u))
+# for u in users:
+#     dumpdata(os.path.join('users', u))
 
 try:
     os.mkdir('flags')
@@ -119,20 +119,20 @@ try:
     os.mkdir('sublist')
 except:
     pass
-for u in users:
-    dumpdata(os.path.join('sublist', u))
+# for u in users:
+#     dumpdata(os.path.join('sublist', u))
 
 subchanges = dumpdata_dir('subchanges')
 if subchanges is None:
     exit(0)
-for s in subchanges:
-    dumpdata(os.path.join('subchanges', s))
+# for s in subchanges:
+#     dumpdata(os.path.join('subchanges', s))
 
 submissions = dumpdata_dir('submissions')
 if submissions is None:
     exit(0)
-for s in submissions:
-    dumpdata(os.path.join('submissions', s))
+# for s in submissions:
+#     dumpdata(os.path.join('submissions', s))
 
 content = open('DataStore.js', 'r', encoding='utf8').read()
 content = content.replace('self.create_event_source();', '// self.create_event_source();')
