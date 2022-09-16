@@ -17,4 +17,5 @@ runs:
         RANKINGURL: ${{ inputs.url }}
         TARGETPATH: ${{ inputs.target }}
       run: |
+        rm -rf $TARGETPATH
         python3 dump.py
