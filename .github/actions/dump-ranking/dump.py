@@ -41,7 +41,7 @@ def dumpdata_dir(path, jsondecode=True):
     except:
         pass
     open(os.path.join(path, 'index.json'), 'w').write(json.dumps(data))
-    open(os.path.join(path, '.htaccess'), 'w').write('DirectoryIndex index.json')
+    # open(os.path.join(path, '.htaccess'), 'w').write('DirectoryIndex index.json')
     return data
 
 
@@ -134,3 +134,11 @@ if submissions is None:
     exit(0)
 for s in submissions:
     dumpdata(os.path.join('submissions', s))
+
+content = open('DataStore.js', 'r', encoding='utf8').read()
+content = content.replace('self.create_event_source();', '// self.create_event_source();')
+open('DataStore.js', 'w', encoding='utf8').write(content)
+
+content = open('DataStore.js', 'r', encoding='utf8').read()
+content = content.replace('return "faces/" + u_key;', 'return "img/face.png"; // "faces/" + u_key;')
+open('DataStore.js', 'w', encoding='utf8').write(content)
