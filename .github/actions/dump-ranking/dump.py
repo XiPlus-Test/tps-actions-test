@@ -5,9 +5,12 @@ import requests
 from urllib.parse import urljoin
 
 os.chdir(os.environ.get('GITHUB_WORKSPACE'))
+print('chdir to', os.environ.get('GITHUB_WORKSPACE'))
 
 BaseURL = os.environ.get('RANKINGURL')
 SavePath = os.environ.get('TARGETPATH')
+print('BaseURL', BaseURL)
+print('SavePath', SavePath)
 
 
 def dumpdata(path, jsondecode=True, save=True):
