@@ -45,7 +45,7 @@ for i in range(prob_cnt):
         makefile = makefile.replace('# NEWPROBELM', 'import-{0}:\n\tcmsImportTask ./{0}/ -u $(if $(s), , --no-statement)\n\n# NEWPROBELM'.format(path))
         readme = re.sub(
             '\n*<!-- new problem -->',
-            '| {0} | [statement]({1}/statement) [md]({1}/statement/index.md) [pdf]({1}/statement/index.pdf) | [gen]({1}/gen) | [validator]({1}/validator) | [solution]({1}/solution) [check]({1}/solutions-check.txt) | [tests]({1}/tests) | [problem]({1}/problem.json) [solutions]({1}/solutions.json) [subtasks]({1}/subtasks.json) |\n\n<!-- new problem -->'.format(label, path),
+            '\n| {0} | [statement]({1}/statement) [md]({1}/statement/index.md) [pdf]({1}/statement/index.pdf) | [gen]({1}/gen) | [validator]({1}/validator) | [solution]({1}/solution) [check]({1}/solutions-check.txt) | [tests]({1}/tests) | [problem]({1}/problem.json) [solutions]({1}/solutions.json) [subtasks]({1}/subtasks.json) |\n\n<!-- new problem -->'.format(label, path),
             readme
         )
     else:
