@@ -5,7 +5,6 @@ import requests
 from urllib.parse import urljoin
 
 os.chdir(os.environ.get('GITHUB_WORKSPACE'))
-print('chdir to', os.environ.get('GITHUB_WORKSPACE'))
 
 BaseURL = os.environ.get('RANKINGURL')
 SavePath = os.environ.get('TARGETPATH')
@@ -139,6 +138,6 @@ content = open('DataStore.js', 'r', encoding='utf8').read()
 content = content.replace('self.create_event_source();', '// self.create_event_source();')
 open('DataStore.js', 'w', encoding='utf8').write(content)
 
-content = open('DataStore.js', 'r', encoding='utf8').read()
+content = open('Config.js', 'r', encoding='utf8').read()
 content = content.replace('return "faces/" + u_key;', 'return "img/face.png"; // "faces/" + u_key;')
-open('DataStore.js', 'w', encoding='utf8').write(content)
+open('Config.js', 'w', encoding='utf8').write(content)
