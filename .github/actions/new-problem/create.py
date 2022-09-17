@@ -48,7 +48,7 @@ for i in range(prob_cnt):
 
         problems.append(label)
 
-        makefile = makefile.replace('# NEWPROBELM', 'import-{0}:\n\tcmsImportTask ./{0}/ -u $(if $(s), , --no-statement)\n\n# NEWPROBELM'.format(path))
+        makefile = makefile.replace('# NEWPROBLEM', 'import-{0}:\n\tcmsImportTask ./{0}/ -u $(if $(s), , --no-statement)\n\n# NEWPROBLEM'.format(path))
 
         readme = re.sub(
             '\n*<!-- new problem -->',
