@@ -1,8 +1,9 @@
+import glob
 import json
 import os
-import glob
 import re
 import subprocess
+
 from PIL import Image
 
 os.chdir(os.environ.get('GITHUB_WORKSPACE'))
