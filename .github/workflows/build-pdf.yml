@@ -110,6 +110,20 @@ jobs:
           echo ""
           pdfunite -v
 
+      - name: Setup git
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+      - uses: XiPlus-Test/tps-actions-test/.github/actions/convert-images@main
+
+      - name: Commit images
+        run: |
+          git status
+          git pull
+          git diff-index --quiet HEAD -- || git commit -m "Compress images"
+          git push
+
       - name: Build pdfs
         run: |
           for prob in ${{ needs.pre-build.outputs.pdf }}; do
@@ -151,8 +165,6 @@ jobs:
       - name: Commit pdf
         run: |
           git status
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
           git pull
           git diff-index --quiet HEAD -- || git commit -m "Build pdfs"
           git push
