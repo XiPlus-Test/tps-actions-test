@@ -22,7 +22,7 @@ for pro in problems:
     jpgs = glob.glob('*.jpg')
 
     for source in pngs:
-        target = os.path.splitext(source) + '.jpg'
+        target = os.path.splitext(source)[0] + '.jpg'
         while os.path.exists(target):
             idx += 1
             target = 'img{}.jpg'.format(idx if idx > 1 else '')
