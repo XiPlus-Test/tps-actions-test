@@ -89,6 +89,8 @@ jobs:
 
           sudo apt-get install poppler-utils
 
+          sudo python3 -m pip install pillow
+
           rm -f NotoSansCJK-Bold.ttc.zip
           rm -rf NotoSansCJK-Bold/
           rm -f NotoSansCJK-Regular.ttc.zip
