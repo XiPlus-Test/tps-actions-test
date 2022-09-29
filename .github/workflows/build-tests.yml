@@ -78,6 +78,23 @@ jobs:
       - uses: XiPlus-Test/tps-actions-test/.github/actions/install-tps@main
         if: ${{ runner.name == 'Hosted Agent' || startsWith(runner.name, 'GitHub Actions') }}
 
+      - name: Check environment
+        working-directory: pA
+        run: |
+          lsb_release -a
+          echo ""
+          git --version
+          echo ""
+          pandoc --version
+          echo ""
+          xelatex --version
+          echo ""
+          pdfunite -v
+          echo ""
+          tps || true
+          echo ""
+          whoami
+
       - name: Setup git
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
