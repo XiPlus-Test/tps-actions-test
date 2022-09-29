@@ -69,21 +69,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Check environment
-        working-directory: pA
-        run: |
-          lsb_release -a
-          echo ""
-          pandoc -v
-          echo ""
-          xetex -v
-          echo ""
-          tps || :;
-          echo ""
-          fc-list | grep "Noto Sans Mono CJK TC" || :;
-          echo ""
-          pdfunite -v
-
       - name: Setup git
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
