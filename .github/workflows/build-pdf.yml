@@ -72,6 +72,7 @@ jobs:
           pwd
           ls -al
           git --version
+          whoami
           git status
 
       - name: Setup git
