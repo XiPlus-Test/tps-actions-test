@@ -61,6 +61,9 @@ jobs:
     runs-on: ${{ inputs.runs-on }}
     container:
       image: ghcr.io/xiplus-test/tps-working-environment:main
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.github_token }}
     timeout-minutes: 5
 
     steps:
