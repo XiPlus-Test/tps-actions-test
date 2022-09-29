@@ -72,6 +72,7 @@ jobs:
           ls -al
           git --version
           whoami
+          git config --global --add safe.directory "*"
           git status
 
       - name: Setup git
