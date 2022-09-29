@@ -61,6 +61,7 @@ jobs:
     runs-on: ${{ inputs.runs-on }}
     container:
       image: ghcr.io/xiplus-test/tps-working-environment:main
+      options: --user root
     timeout-minutes: 5
 
     steps:
