@@ -70,6 +70,7 @@ jobs:
         run: |
           pwd
           ls -al
+          git status
 
       - name: Setup git
         run: |
