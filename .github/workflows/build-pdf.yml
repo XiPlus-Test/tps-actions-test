@@ -67,6 +67,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Check environment
+        working-directory: pA
         run: |
           lsb_release -a
           git --version
