@@ -68,15 +68,17 @@ jobs:
 
       - name: Check environment
         run: |
-          pwd
-          ls -al
+          lsb_release -a
           git --version
+          pandoc --version
+          xelatex --version
+          pdfunite -v
+          tps
           whoami
-          git config --global --add safe.directory "*"
-          git status
 
       - name: Setup git
         run: |
+          git config --global --add safe.directory "*"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
