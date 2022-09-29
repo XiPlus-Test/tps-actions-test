@@ -59,8 +59,8 @@ jobs:
     needs: [pre-build]
     if: needs.pre-build.outputs.problems != '[]' || (github.event_name == 'workflow_dispatch' && inputs.merge)
     runs-on: ${{ inputs.runs-on }}
-    container:
-      image: ghcr.io/xiplus-test/tps-working-environment:main
+    # container:
+    #   image: ghcr.io/xiplus-test/tps-working-environment:main
     timeout-minutes: 5
 
     steps:
