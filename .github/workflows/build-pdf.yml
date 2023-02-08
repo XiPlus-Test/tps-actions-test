@@ -59,14 +59,12 @@ jobs:
     needs: [pre-build]
     if: needs.pre-build.outputs.problems != '[]' || (github.event_name == 'workflow_dispatch' && inputs.merge)
     runs-on: ${{ inputs.runs-on }}
-    # container:
-    #   image: ghcr.io/xiplus-test/tps-working-environment:main
     timeout-minutes: 5
 
     steps:
       - uses: actions/checkout@v3
 
-      - uses: TNFSH-Programming-Contest/tps-actions/.github/actions/install-tps@main
+      - uses: XiPlus-Test/tps-actions-test/.github/actions/install-tps@main
         if: ${{ runner.name == 'Hosted Agent' || startsWith(runner.name, 'GitHub Actions') }}
 
       - name: Install dependencies
@@ -105,23 +103,18 @@ jobs:
         run: |
           lsb_release -a
           echo ""
-          git --version
+          pandoc -v
           echo ""
-          pandoc --version
-          echo ""
-          xelatex --version
-          echo ""
-          pdfunite -v
+          xetex -v
           echo ""
           tps || :;
           echo ""
           fc-list | grep "Noto Sans Mono CJK TC" || :;
           echo ""
-          whoami
+          pdfunite -v
 
       - name: Setup git
         run: |
-          git config --global --add safe.directory "*"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
