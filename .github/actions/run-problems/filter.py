@@ -12,7 +12,7 @@ for pro in problems:
         result.append(pro)
 
 print('result:', result)
-os.environ['GITHUB_OUTPUT'] = os.environ.get('GITHUB_OUTPUT', '') \
-    + '\nproblemsjson={}'.format(json.dumps(result)) \
-    + '\nproblems={}'.format(' '.join(result)) \
-    + '\nlastproblem={}'.format(problems[-1])
+with open(os.environ.get('GITHUB_OUTPUT', ''), 'a') as f:
+    f.write('\nproblemsjson={}'.format(json.dumps(result)))
+    f.write('\nproblems={}'.format(' '.join(result)))
+    f.write('\nlastproblem={}'.format(problems[-1]))
