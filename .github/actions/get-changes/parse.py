@@ -121,4 +121,4 @@ for key in flags:
 
 print('flags:', flags)
 print('result:', result)
-print('::set-output name=changes::{}'.format(json.dumps(result)))
+os.environ['GITHUB_OUTPUT'] = os.environ.get('GITHUB_OUTPUT', '') + '\nchanges={}'.format(json.dumps(result))
